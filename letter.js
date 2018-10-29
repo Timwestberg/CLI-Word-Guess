@@ -2,7 +2,7 @@
 
 
 
-let Letter = function(Word) 
+let Letter = function(Word, blanks) 
 {
     this.wrongLetters = [];
 
@@ -12,9 +12,7 @@ let Letter = function(Word)
 
     this.selectedWord = Word.toLowerCase();
 
-    this.lettersInWord = this.selectedWord.split("");
-
-    this.numBlanks = this.lettersInWord.length;
+    this.numBlanks = blanks;
 
     this.guessedLetter = "";
 
@@ -68,15 +66,18 @@ let Letter = function(Word)
 
     this.blanks();
 
+    console.log("Deep in:" + this.selectedWord);
+
+
 
 // ======================= TESTING ===========================================
-
+    console.log(this.numBlanks);
     // this.CheckLetter(this.guessedLetter);
     // console.log(this.lettersInWord);
-    // console.log(this.selectedWord);
+    console.log(this.selectedWord);
     // console.log(this.guessedLetter);
-    // console.log(this.guessesLeft);
-    // console.log(this.blanksAndSuccess.join(" "));
+    console.log(this.guessesLeft);
+    console.log(this.blanksAndSuccess.join(" "));
 
 // ======================= TESTING ===========================================
 

@@ -8,29 +8,38 @@
 
 let Letter = require("./letter");
 
-let Word = function() {
+let Word = function(selectedWord) {
 
-        this.wordbank = ["Naurto","Magi","DeathNote", "Sinbad", "FairyTail", "Pokemon", "Bleach","Fate"]
+        this.selectedWord = selectedWord.toLowerCase();
 
-        this.random = Math.floor(Math.random() * this.wordbank.length)
-        
-        // console.log(this.random)
+        this.lettersInWord = this.selectedWord.split("");
+    
+        this.numBlanks = this.lettersInWord.length;
 
-        this.selectedWord = this.wordbank[this.random]
+        console.log("Word function delivery: " + this.lettersInWord);
 
-        console.log(this.selectedWord);
+        let letters = new Letter(this.selectedWord, this.numBlanks);
 
-        let word = new Letter(this.selectedWord);
+        this.word = letters
 
-        // word.guessedLetter = process.argv[2]
+        // letters.blanks();
 
-        // console.log(word.guessedLetter);
+        this.guess = function(letter) {
 
-        // word.CheckLetter(word.guessedLetter);
+            this.guess = letter
 
-        let display = "You still have letters to guess! " + "\n " + word.blanksAndSuccess.join(" ") + "\n \n" + "You have " + word.guessesLeft + " guesses left!";
+            letters.CheckLetter(this.guess)
 
-        console.log(display);
+            console.log("This is the guess function: " + this.guess)
+
+            this.displayB = "You still have letters to guess! " + "\n " + letters.blanksAndSuccess.join(" ") + "\n \n" + "You have " + letters.guessesLeft + " guesses left!";
+
+            console.log(this.displayB);
+        }
+
+        this.displayA = "Here is your word, take a crack at it ! " + "\n " + letters.blanksAndSuccess.join(" ") + "\n \n" + "You have " + letters.guessesLeft + " guesses left!";
+
+        // console.log(this.display);
 
         // console.log(word.guessesLeft);
 
@@ -38,7 +47,8 @@ let Word = function() {
 
 
 
-    Word();
+   
     
 
 
+    module.exports = Word;
